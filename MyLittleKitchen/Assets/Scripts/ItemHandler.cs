@@ -35,6 +35,24 @@ public class ItemHandler : MonoBehaviour
         }
 
     }
+    
+    void DisableAllChildColliders(GameObject parent)
+    {
+        Collider[] colliders = parent.GetComponentsInChildren<Collider>();
+        foreach (Collider col in colliders)
+        {
+            col.enabled = false;
+        }
+    }
+
+    void EnableAllChildColliders(GameObject parent)
+    {
+        Collider[] colliders = parent.GetComponentsInChildren<Collider>();
+        foreach (Collider col in colliders)
+        {
+            col.enabled = true;
+        }
+    }
 
     private void PlaceItem(GameObject hand, Transform item)
     {
@@ -71,6 +89,12 @@ public class ItemHandler : MonoBehaviour
                 box.enabled = true;
             if (body != null)
                 body.isKinematic = false;
+            EnableAllChildColliders(item.gameObject);
+
+            // deactivate item scripts
+            MonoBehaviour[] scripts = item.GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour script in scripts)
+                script.enabled = false;
 
             Debug.Log(hitpoint);
         }
@@ -88,7 +112,7 @@ public class ItemHandler : MonoBehaviour
         // Raycast from player camera to mouse position
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, maxDistToItem))
+        if (Physics.Raycast(ray, out hit, maxDistToItem) && hit.transform.CompareTag("Item"))
         {
             BoxCollider box = hit.transform.GetComponent<BoxCollider>();
             Rigidbody body = hit.transform.GetComponent<Rigidbody>();
@@ -103,6 +127,13 @@ public class ItemHandler : MonoBehaviour
             hit.transform.SetParent(hand.transform, worldPositionStays: false);
             hit.transform.localPosition = Vector3.zero;
             hit.transform.localRotation = Quaternion.identity;
+
+            DisableAllChildColliders(hit.transform.gameObject);
+
+            // activate item scripts
+            MonoBehaviour[] scripts = hit.transform.GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour script in scripts)
+                script.enabled = true;
 
             Debug.Log(hit.transform);
         }
