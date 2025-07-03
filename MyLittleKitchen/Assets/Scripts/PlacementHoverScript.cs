@@ -3,13 +3,19 @@ using UnityEngine;
 public class PlacementHoverScript : MonoBehaviour
 {
     public GameObject hoverCirclePrefab;
+    public float size = 1;
     private GameObject hoverCircle;
 
     [Header("Camera")]
-    public Camera cam;
+    private Camera cam;
     public float maxDistToItem;
 
     private RaycastHit hit;
+
+    void Start()
+    {
+        cam = Camera.main;
+    }
 
     void FixedUpdate()
     {
@@ -26,7 +32,12 @@ public class PlacementHoverScript : MonoBehaviour
             Vector3 newPos = hit.point;
 
             if (hoverCircle == null)
+            {
                 hoverCircle = Instantiate(hoverCirclePrefab, newPos, Quaternion.identity);
+                Vector3 circleScale = hoverCircle.transform.localScale;
+                Vector3 scaleModif = new Vector3(size, 1, size);
+                hoverCircle.transform.localScale = Vector3.Scale(circleScale, scaleModif);
+            }
             else
                 hoverCircle.transform.position = newPos;
         }

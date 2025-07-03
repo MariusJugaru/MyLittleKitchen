@@ -13,12 +13,6 @@ public class ItemHandler : MonoBehaviour
 
     private RaycastHit hit;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -68,7 +62,20 @@ public class ItemHandler : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxDistToItem))
         {
             Vector3 hitpoint = hit.point;
-            Vector3 newPos = hitpoint + new Vector3(0, item.localScale.y / 2f + 0.1f, 0);
+            Transform placePos = item.transform.Find("PlacePos");
+
+            Vector3 offset;
+            if (placePos == null)
+            {
+                offset = new Vector3(0, item.localScale.y / 2f + 0.1f, 0);
+            }
+            else
+            {
+                offset = item.position - placePos.position;
+                Debug.Log("offset= " + offset);
+            }
+
+            Vector3 newPos = hitpoint + offset;
 
             // Place item at the mouse position
             item.SetParent(null, worldPositionStays: false);
@@ -114,8 +121,18 @@ public class ItemHandler : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, maxDistToItem) && hit.transform.CompareTag("Item"))
         {
-            BoxCollider box = hit.transform.GetComponent<BoxCollider>();
-            Rigidbody body = hit.transform.GetComponent<Rigidbody>();
+            Transform item;
+            if (hit.transform.parent == null)
+            {
+                item = hit.transform;
+            }
+            else
+            {
+                item = hit.transform.parent;
+            }
+
+            BoxCollider box = item.GetComponent<BoxCollider>();
+            Rigidbody body = item.GetComponent<Rigidbody>();
 
             // deactivate boxCollider and rigidbody
             if (box != null)
@@ -124,18 +141,18 @@ public class ItemHandler : MonoBehaviour
                 body.isKinematic = true;
 
             // move item into the hand
-            hit.transform.SetParent(hand.transform, worldPositionStays: false);
-            hit.transform.localPosition = Vector3.zero;
-            hit.transform.localRotation = Quaternion.identity;
+            item.SetParent(hand.transform, worldPositionStays: false);
+            item.localPosition = Vector3.zero;
+            item.localRotation = Quaternion.identity;
 
-            DisableAllChildColliders(hit.transform.gameObject);
+            DisableAllChildColliders(item.gameObject);
 
             // activate item scripts
-            MonoBehaviour[] scripts = hit.transform.GetComponents<MonoBehaviour>();
+            MonoBehaviour[] scripts = item.GetComponents<MonoBehaviour>();
             foreach (MonoBehaviour script in scripts)
                 script.enabled = true;
 
-            Debug.Log(hit.transform);
+            Debug.Log(item);
         }
     }
 }
