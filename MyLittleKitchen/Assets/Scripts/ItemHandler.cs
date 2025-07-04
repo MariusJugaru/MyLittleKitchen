@@ -59,7 +59,7 @@ public class ItemHandler : MonoBehaviour
         // Raycast from player camera to mouse position
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, maxDistToItem))
+        if (Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore))
         {
             Vector3 hitpoint = hit.point;
             Transform placePos = item.transform.Find("PlacePos");
@@ -119,7 +119,7 @@ public class ItemHandler : MonoBehaviour
         // Raycast from player camera to mouse position
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, maxDistToItem) && hit.transform.CompareTag("Item"))
+        if (Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore) && hit.transform.CompareTag("Item"))
         {
             Transform item;
             if (hit.transform.parent == null)

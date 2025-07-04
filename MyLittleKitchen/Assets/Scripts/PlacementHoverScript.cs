@@ -27,7 +27,7 @@ public class PlacementHoverScript : MonoBehaviour
         // Raycast from player camera to mouse position
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, maxDistToItem))
+        if (Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore))
         {
             Vector3 newPos = hit.point;
 
