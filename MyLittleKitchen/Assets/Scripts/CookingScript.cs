@@ -49,6 +49,13 @@ public class CookingScript : MonoBehaviour
             food.SetActive(false);
             aux = Instantiate(cookedPrefab, food.transform.position, food.transform.rotation);
             aux.transform.SetParent(transform, worldPositionStays: true);
+
+            // set the same collider and rigidbody state
+            Collider collider = aux.GetComponent<Collider>();
+            Rigidbody rb = aux.GetComponent<Rigidbody>();
+            collider.enabled = food.GetComponent<Collider>().enabled;
+            rb.isKinematic = food.GetComponent<Rigidbody>().isKinematic;
+
             Destroy(food);
 
             food = aux;
@@ -62,6 +69,13 @@ public class CookingScript : MonoBehaviour
             food.SetActive(false);
             aux = Instantiate(slightlyBurntPrefab, food.transform.position, food.transform.rotation);
             aux.transform.SetParent(transform, worldPositionStays: true);
+
+            // set the same collider and rigidbody state
+            Collider collider = aux.GetComponent<Collider>();
+            Rigidbody rb = aux.GetComponent<Rigidbody>();
+            collider.enabled = food.GetComponent<Collider>().enabled;
+            rb.isKinematic = food.GetComponent<Rigidbody>().isKinematic;
+
             Destroy(food);
 
             food = aux;
@@ -75,10 +89,18 @@ public class CookingScript : MonoBehaviour
             food.SetActive(false);
             aux = Instantiate(burntPrefab, food.transform.position, food.transform.rotation);
             aux.transform.SetParent(transform, worldPositionStays: true);
+
+            // set the same collider and rigidbody state
+            Collider collider = aux.GetComponent<Collider>();
+            Rigidbody rb = aux.GetComponent<Rigidbody>();
+            collider.enabled = food.GetComponent<Collider>().enabled;
+            rb.isKinematic = food.GetComponent<Rigidbody>().isKinematic;
+
             Destroy(food);
 
             food = aux;
             aux = null;
         }
+
     }
 }

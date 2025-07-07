@@ -29,7 +29,7 @@ public class ItemHandler : MonoBehaviour
         }
 
     }
-    
+
     void DisableAllChildColliders(GameObject parent)
     {
         Collider[] colliders = parent.GetComponentsInChildren<Collider>();
@@ -39,12 +39,30 @@ public class ItemHandler : MonoBehaviour
         }
     }
 
+    void DisableAllChildRigidbody(GameObject parent)
+    {
+        Rigidbody[] rigidbodies = parent.GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in rigidbodies)
+        {
+            rb.isKinematic = true;
+        }
+    }
+
     void EnableAllChildColliders(GameObject parent)
     {
         Collider[] colliders = parent.GetComponentsInChildren<Collider>();
         foreach (Collider col in colliders)
         {
             col.enabled = true;
+        }
+    }
+
+    void EnableAllChildRigidbody(GameObject parent)
+    {
+        Rigidbody[] rigidbodies = parent.GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in rigidbodies)
+        {
+            rb.isKinematic = false;
         }
     }
 
@@ -98,6 +116,14 @@ public class ItemHandler : MonoBehaviour
                 body.isKinematic = false;
             EnableAllChildColliders(item.gameObject);
 
+            Transform items = item.Find("Items");
+
+            if (items != null)
+            {
+                EnableAllChildColliders(items.gameObject);
+                EnableAllChildRigidbody(items.gameObject);
+            }
+
             // deactivate item scripts
             MonoBehaviour[] scripts = item.GetComponents<MonoBehaviour>();
             foreach (MonoBehaviour script in scripts)
@@ -119,17 +145,10 @@ public class ItemHandler : MonoBehaviour
         // Raycast from player camera to mouse position
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore) && hit.transform.CompareTag("Item"))
+        if (Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore) &&
+            (hit.transform.CompareTag("Item") || hit.transform.CompareTag("Equipment")))
         {
-            Transform item;
-            if (hit.transform.parent == null)
-            {
-                item = hit.transform;
-            }
-            else
-            {
-                item = hit.transform.parent;
-            }
+            Transform item = hit.transform;
 
             BoxCollider box = item.GetComponent<BoxCollider>();
             Rigidbody body = item.GetComponent<Rigidbody>();
@@ -146,6 +165,13 @@ public class ItemHandler : MonoBehaviour
             item.localRotation = Quaternion.identity;
 
             DisableAllChildColliders(item.gameObject);
+            Transform items = item.Find("Items");
+
+            if (items != null)
+            {
+                DisableAllChildColliders(items.gameObject);
+                DisableAllChildRigidbody(items.gameObject);
+            }
 
             // activate item scripts
             MonoBehaviour[] scripts = item.GetComponents<MonoBehaviour>();

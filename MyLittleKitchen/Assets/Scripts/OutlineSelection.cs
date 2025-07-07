@@ -23,7 +23,8 @@ public class OutlineSelection : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore)) //Make sure you have EventSystem in the hierarchy before using EventSystem
         {
             highlight = raycastHit.transform;
-            if ((highlight.CompareTag("Item") || highlight.CompareTag("Interactable")) && highlight != selection)
+            if ((highlight.CompareTag("Item") || highlight.CompareTag("Interactable") || highlight.CompareTag("Equipment"))
+                && highlight != selection)
             {
                 if (highlight.gameObject.GetComponent<Outline>() != null)
                 {

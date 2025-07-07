@@ -564,7 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverCirclePrefab: {fileID: 8102316948000523553, guid: 6ce11c025bd38a84d8447941e42dddce, type: 3}
-  cam: {fileID: 0}
+  size: 1
   maxDistToItem: 3
 --- !u!1 &7297410550304770996
 GameObject:

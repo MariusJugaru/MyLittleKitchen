@@ -9,7 +9,7 @@ public class ButtonScript : MonoBehaviour
     public GameObject button;
     public float maxDistToItem = 3f;
 
-    void Start()
+    public void Start()
     {
         cam = Camera.main;
     }
