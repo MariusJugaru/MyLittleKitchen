@@ -131,20 +131,31 @@ public class HeatScript : ButtonScript
         item = other.transform.gameObject;
 
         Transform items = null;
-        
+
         if (item.CompareTag("Equipment"))
         {
             equipment = item;
             equipmentCollider = equipment.GetComponent<Collider>();
             items = item.transform.Find("Items");
             Debug.Log("Trigger:" + item);
-        }
 
-        if (on && items != null)
+            if (on)
+            {
+                // if the equipment has items and the heating source is on enable their scripts
+                // the food has a cooking script
+                EnableAllChildrenScripts(items.gameObject);
+            }
+        }
+        else if (item.CompareTag("Food") && on &&
+            item.transform.parent != null && item.transform.parent.parent != null &&
+            item.transform.parent.parent.name == "Items")
         {
-            // if the equipment has items and the heating source is on enable their scripts
-            // the food has a cooking script
-            EnableAllChildrenScripts(items.gameObject);
+            MonoBehaviour[] scripts = item.transform.parent.GetComponents<MonoBehaviour>();
+
+            foreach (MonoBehaviour script in scripts)
+            {
+                script.enabled = true;
+            }
         }
 
     }
