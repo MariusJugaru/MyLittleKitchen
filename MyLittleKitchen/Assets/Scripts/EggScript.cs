@@ -6,15 +6,15 @@ public class EggScript : MonoBehaviour
     public GameObject rawEggPrefab;
 
     [Header("Camera")]
-    public Camera cam;
-    public float maxDistToItem;
+    private Camera cam;
+    public float maxDistToItem = 3;
 
     private RaycastHit hit;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        cam = Camera.main;
     }
 
     void Update()

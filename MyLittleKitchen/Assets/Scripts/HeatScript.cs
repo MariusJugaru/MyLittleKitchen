@@ -101,11 +101,12 @@ public class HeatScript : ButtonScript
 
     void EnableAllChildrenScripts(GameObject parent)
     {
-        MonoBehaviour[] scripts = parent.GetComponentsInChildren<MonoBehaviour>(true);
+        MonoBehaviour[] scripts = parent.GetComponentsInChildren<CookingScript>(true);
+        MonoBehaviour outline = parent.GetComponent<Outline>();
 
         foreach (MonoBehaviour script in scripts)
         {
-            if (script.gameObject != parent)
+            if (script.gameObject != parent && script != outline)
             {
                 script.enabled = true;
             }
@@ -150,12 +151,18 @@ public class HeatScript : ButtonScript
             item.transform.parent != null && item.transform.parent.parent != null &&
             item.transform.parent.parent.name == "Items")
         {
-            MonoBehaviour[] scripts = item.transform.parent.GetComponents<MonoBehaviour>();
+            // MonoBehaviour[] scripts = item.transform.parent.GetComponents<MonoBehaviour>();
+            // MonoBehaviour outline = item.transform.parent.GetComponent<Outline>();
 
-            foreach (MonoBehaviour script in scripts)
-            {
-                script.enabled = true;
-            }
+            // foreach (MonoBehaviour script in scripts)
+            // {
+            //     if (script != outline)
+            //         script.enabled = true;
+            // }
+
+            MonoBehaviour cookingScript = item.transform.parent.GetComponent<CookingScript>();
+            if (cookingScript)
+                cookingScript.enabled = true;
         }
 
     }

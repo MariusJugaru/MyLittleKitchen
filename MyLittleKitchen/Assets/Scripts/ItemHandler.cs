@@ -4,14 +4,20 @@ using UnityEngine.UIElements;
 public class ItemHandler : MonoBehaviour
 {
     [Header("Camera")]
-    public Camera cam;
-    public float maxDistToItem;
+    private Camera cam;
+    public float maxDistToItem = 3;
 
     [Header("Hands")]
     public GameObject leftHand;
     public GameObject rightHand;
+    public static bool isEquipment = false;
 
     private RaycastHit hit;
+
+    void Start()
+    {
+        cam = Camera.main;
+    }
 
     // Update is called once per frame
     void Update()
@@ -30,7 +36,7 @@ public class ItemHandler : MonoBehaviour
 
     }
 
-    void DisableAllChildColliders(GameObject parent)
+    public static void DisableAllChildColliders(GameObject parent)
     {
         Collider[] colliders = parent.GetComponentsInChildren<Collider>();
         foreach (Collider col in colliders)
@@ -39,7 +45,7 @@ public class ItemHandler : MonoBehaviour
         }
     }
 
-    void DisableAllChildRigidbody(GameObject parent)
+    public static void DisableAllChildRigidbody(GameObject parent)
     {
         Rigidbody[] rigidbodies = parent.GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody rb in rigidbodies)
@@ -48,7 +54,7 @@ public class ItemHandler : MonoBehaviour
         }
     }
 
-    void EnableAllChildColliders(GameObject parent)
+    public static void EnableAllChildColliders(GameObject parent)
     {
         Collider[] colliders = parent.GetComponentsInChildren<Collider>();
         foreach (Collider col in colliders)
@@ -57,7 +63,7 @@ public class ItemHandler : MonoBehaviour
         }
     }
 
-    void EnableAllChildRigidbody(GameObject parent)
+    public static void EnableAllChildRigidbody(GameObject parent)
     {
         Rigidbody[] rigidbodies = parent.GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody rb in rigidbodies)
@@ -73,6 +79,8 @@ public class ItemHandler : MonoBehaviour
             Debug.Log("Hand is not valid.");
             return;
         }
+
+        isEquipment = false;
 
         // Raycast from player camera to mouse position
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -145,9 +153,12 @@ public class ItemHandler : MonoBehaviour
         // Raycast from player camera to mouse position
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
+
         if (Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore) &&
             (hit.transform.CompareTag("Item") || hit.transform.CompareTag("Equipment")))
         {
+            if (hit.transform.CompareTag("Equipment")) isEquipment = true;
+            
             Transform item = hit.transform;
 
             BoxCollider box = item.GetComponent<BoxCollider>();
