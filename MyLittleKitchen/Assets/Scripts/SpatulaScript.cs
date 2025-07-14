@@ -71,6 +71,9 @@ public class SpatulaScript : MonoBehaviour
         MonoBehaviour cookingScript = item.GetComponent<CookingScript>();
         if (cookingScript)
             cookingScript.enabled = false;
+        AudioSource audio = item.GetComponent<AudioSource>();
+        if (audio)
+            audio.enabled = false;
     }
 
     void DropItem(Transform item, Vector3 newPos)

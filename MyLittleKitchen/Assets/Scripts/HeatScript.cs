@@ -58,9 +58,16 @@ public class HeatScript : ButtonScript
             if (items == null) return;
 
             if (on)
+            {
                 EnableAllChildrenScripts(items.gameObject);
+                EnableAllChildrenSounds(items.gameObject);
+            }
             else
+            {
                 DisableAllChildrenScripts(items.gameObject);
+                DisableAllChildrenSounds(items.gameObject);
+            }
+                
         }
     }
 
@@ -87,6 +94,7 @@ public class HeatScript : ButtonScript
                 if (items != null)
                 {
                     DisableAllChildrenScripts(items.gameObject);
+                    DisableAllChildrenSounds(items.gameObject);
                 }
                 Debug.Log("Exit:" + equipment);
 
@@ -126,6 +134,26 @@ public class HeatScript : ButtonScript
         }
     }
 
+    void EnableAllChildrenSounds(GameObject parent)
+    {
+        AudioSource[] audios = parent.GetComponentsInChildren<AudioSource>(true);
+
+        foreach (AudioSource audio in audios)
+        {
+            audio.enabled = true;
+        }
+    }
+
+    void DisableAllChildrenSounds(GameObject parent)
+    {
+        AudioSource[] audios = parent.GetComponentsInChildren<AudioSource>(true);
+
+        foreach (AudioSource audio in audios)
+        {
+            audio.enabled = false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         GameObject item;
@@ -145,6 +173,7 @@ public class HeatScript : ButtonScript
                 // if the equipment has items and the heating source is on enable their scripts
                 // the food has a cooking script
                 EnableAllChildrenScripts(items.gameObject);
+                EnableAllChildrenSounds(items.gameObject);
             }
         }
         else if (item.CompareTag("Food") && on &&
@@ -163,6 +192,10 @@ public class HeatScript : ButtonScript
             MonoBehaviour cookingScript = item.transform.parent.GetComponent<CookingScript>();
             if (cookingScript)
                 cookingScript.enabled = true;
+
+            AudioSource audio = item.transform.parent.GetComponent<AudioSource>();
+            if (audio)
+                audio.enabled = true;
         }
 
     }

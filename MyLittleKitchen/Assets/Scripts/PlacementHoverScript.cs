@@ -8,7 +8,7 @@ public class PlacementHoverScript : MonoBehaviour
 
     [Header("Camera")]
     private Camera cam;
-    public float maxDistToItem;
+    public float maxDistToItem = 3;
 
     private RaycastHit hit;
 
