@@ -21,7 +21,8 @@ public class ButtonScript : MonoBehaviour
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, maxDistToItem) && hit.transform == objectTouched.transform)
+            if (Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore) &&
+                hit.transform == objectTouched.transform)
                 return true;
             else
                 return false;

@@ -7,14 +7,22 @@ public class CookingScript : MonoBehaviour
     public GameObject slightlyBurntPrefab;
     public GameObject burntPrefab;
 
-    public CurrentState state = CurrentState.raw;
-    public enum CurrentState
+    
+    public enum CookState
     {
         raw,
         cooked,
         slightlyBurnt,
         burnt
     };
+    public CookState state = CookState.raw;
+
+    public enum FoodType
+    {
+        FriedEgg,
+    };
+
+    public FoodType foodType;
 
     [Header("Cook times")]
     public float timeModifier = 1;
@@ -41,9 +49,9 @@ public class CookingScript : MonoBehaviour
         currentTime += Time.deltaTime * timeModifier;
 
         // check if the food goes to next cook state
-        if (state == CurrentState.raw && currentTime >= time1)
+        if (state == CookState.raw && currentTime >= time1)
         {
-            state = CurrentState.cooked;
+            state = CookState.cooked;
             currentTime = 0;
 
             food.SetActive(false);
@@ -61,9 +69,9 @@ public class CookingScript : MonoBehaviour
             food = aux;
             aux = null;
         }
-        else if (state == CurrentState.cooked && currentTime >= time2)
+        else if (state == CookState.cooked && currentTime >= time2)
         {
-            state = CurrentState.slightlyBurnt;
+            state = CookState.slightlyBurnt;
             currentTime = 0;
 
             food.SetActive(false);
@@ -81,9 +89,9 @@ public class CookingScript : MonoBehaviour
             food = aux;
             aux = null;
         }
-        else if (state == CurrentState.slightlyBurnt && currentTime >= time3)
+        else if (state == CookState.slightlyBurnt && currentTime >= time3)
         {
-            state = CurrentState.burnt;
+            state = CookState.burnt;
             currentTime = 0;
 
             food.SetActive(false);
