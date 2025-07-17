@@ -133,9 +133,10 @@ public class ItemHandler : MonoBehaviour
             }
 
             // deactivate item scripts
-            MonoBehaviour[] scripts = item.GetComponents<MonoBehaviour>();
+            MonoBehaviour[] scripts = item.GetComponentsInChildren<MonoBehaviour>();
             foreach (MonoBehaviour script in scripts)
                 script.enabled = false;
+            
 
             Debug.Log(hitpoint);
         }
@@ -188,6 +189,12 @@ public class ItemHandler : MonoBehaviour
             MonoBehaviour[] scripts = item.GetComponents<MonoBehaviour>();
             foreach (MonoBehaviour script in scripts)
                 script.enabled = true;
+            PlacementHoverScript[] itemHover = item.GetComponentsInChildren<PlacementHoverScript>();
+            foreach (PlacementHoverScript script in itemHover)
+            {
+                if (script != GetComponent<PlacementHoverScript>())
+                    script.enabled = true;
+            }
 
             Debug.Log(item);
         }

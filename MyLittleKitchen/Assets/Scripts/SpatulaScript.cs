@@ -71,6 +71,9 @@ public class SpatulaScript : MonoBehaviour
         MonoBehaviour cookingScript = item.GetComponent<CookingScript>();
         if (cookingScript)
             cookingScript.enabled = false;
+        MonoBehaviour placementHover = item.GetComponent<PlacementHoverScript>();
+        if (placementHover)
+            placementHover.enabled = true;
         AudioSource audio = item.GetComponent<AudioSource>();
         if (audio)
             audio.enabled = false;
@@ -88,6 +91,11 @@ public class SpatulaScript : MonoBehaviour
             body.isKinematic = false;
         ItemHandler.EnableAllChildColliders(item.gameObject);
         ItemHandler.EnableAllChildRigidbody(item.gameObject);
+
+        Debug.Log("ITEM: " + item);
+        MonoBehaviour placementHover = item.GetComponent<PlacementHoverScript>();
+        if (placementHover)
+            placementHover.enabled = false;
 
         // move item to new position
         item.SetParent(null, worldPositionStays: false);

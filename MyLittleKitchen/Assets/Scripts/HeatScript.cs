@@ -35,7 +35,7 @@ public class HeatScript : ButtonScript
         if (OnKeyPressed(KeyCode.E, button))
         {
             on = !on;
-            button.transform.rotation *= Quaternion.Euler(0, 0, 90);
+            button.transform.rotation *= Quaternion.Euler(90, 0, 0);
             Debug.Log("Pressed");
 
             changedState = true;

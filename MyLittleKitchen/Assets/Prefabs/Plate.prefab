@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 965326965970074378}
   - component: {fileID: 7336223386045223657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 8878301915536484178}
   - component: {fileID: 5725977992988935962}
   - component: {fileID: 8468338416937431569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plate
   m_TagString: Equipment
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8566501917522234765}
   - component: {fileID: 3375348250800556506}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5130243547367215852}
   - component: {fileID: 7603812661092279503}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8257949050500967230}
   - component: {fileID: 4707501444884917565}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6860855665154811357}
   - component: {fileID: 9122790548905907844}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6584971541366885131}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7995731449288769799}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlacePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9009080081366000245}
   - component: {fileID: 4978064921348690951}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider1 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3521341588018642320}
   - component: {fileID: 3368374859276598570}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7218381243970006610}
   - component: {fileID: 6663268591119242986}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider1 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,6 +675,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c2196bf7e1e6ce5409790b6ef9b1c43e, type: 3}
       propertyPath: m_Name
       value: PlateObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2196bf7e1e6ce5409790b6ef9b1c43e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c2196bf7e1e6ce5409790b6ef9b1c43e, type: 3}
       propertyPath: m_TagString

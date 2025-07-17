@@ -61,4 +61,14 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("QUIT");
         Application.Quit();
     }
+
+    public void NextLevel()
+    {
+        pauseMenuUI.SetActive(false);
+        GameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
