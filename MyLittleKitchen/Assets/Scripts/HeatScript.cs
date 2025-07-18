@@ -12,9 +12,19 @@ public class HeatScript : ButtonScript
     private Collider triggerCollider;
     public Collider equipmentCollider;
 
+    [Header("Audio")]
+    public AudioSource audioSrc;
+    public AudioSource audioFlame;
+    public AudioSource audioFlameOn;
+
+    [Header("Particles")]
+    public ParticleSystem particles;
+
     private new void Start()
     {
         base.Start();
+
+        particles.Stop();
 
         // get the trigger collider for the heat source
         Collider[] colliders = GetComponents<Collider>();
@@ -29,11 +39,26 @@ public class HeatScript : ButtonScript
         }
     }
 
+
     // Update is called once per frame
     void Update()
     {
         if (OnKeyPressed(KeyCode.E, button))
         {
+            if (!on)
+            {
+                audioFlame.time = 0;
+                audioFlame.Play();
+                audioSrc.Play();
+                audioFlameOn.Play();
+                particles.Play();
+            }
+            else
+            {
+                audioFlame.Stop();
+                particles.Stop();
+            }
+                
             on = !on;
             button.transform.rotation *= Quaternion.Euler(90, 0, 0);
             Debug.Log("Pressed");
