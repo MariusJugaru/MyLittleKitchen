@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -41,6 +42,23 @@ public class ServeFoodScript : ButtonScript
     private float maxScore = 0;
     private float currentScore = 0;
 
+    // Order text
+    public GameObject orderText;
+    private TextMeshProUGUI textUI;
+
+    private String GetOrder()
+    {
+        String order = "";
+
+        // check if there are no more orders
+        if (allPlates.Count == 0) return order;
+
+        PlateRequirements req = allPlates[0];
+        foreach (PlateExpectation exp in req.expectations)
+            order += exp.quantity + " x " + exp.requiredFood + "\n";
+
+        return order;
+    }
 
     private new void Start()
     {
@@ -53,6 +71,9 @@ public class ServeFoodScript : ButtonScript
                 maxScore += exp.quantity * 3;
             }
         }
+
+        textUI = orderText.GetComponent<TextMeshProUGUI>();
+        textUI.text = GetOrder();
     }
 
     // Update is called once per frame
@@ -88,6 +109,8 @@ public class ServeFoodScript : ButtonScript
 
         allPlates.Remove(plateReq);
         Debug.Log("Score: " + currentScore);
+
+        textUI.text = GetOrder();
 
         trigger.enabled = true;
 

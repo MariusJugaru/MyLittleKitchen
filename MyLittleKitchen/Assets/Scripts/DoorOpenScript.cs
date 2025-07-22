@@ -16,6 +16,7 @@ public class DoorOpenScript : ButtonScript
     void Update()
     {
         if (!OnKeyPressed(KeyCode.E, button)) return;
+        if (ItemHandler.isEquipment || ItemHandler.isItem) return;
 
         if (open)
         {

@@ -1767,6 +1767,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4194588364594323409, guid: 32748d64c5acc77458cea3589d502922, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194588364594323409, guid: 32748d64c5acc77458cea3589d502922, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5309001754656298013, guid: 32748d64c5acc77458cea3589d502922, type: 3}
       propertyPath: m_Name
       value: HeatSrc1 (2)
@@ -1859,6 +1867,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 869188675711034794, guid: 32748d64c5acc77458cea3589d502922, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194588364594323409, guid: 32748d64c5acc77458cea3589d502922, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194588364594323409, guid: 32748d64c5acc77458cea3589d502922, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5309001754656298013, guid: 32748d64c5acc77458cea3589d502922, type: 3}
@@ -2058,6 +2074,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4194588364594323409, guid: 32748d64c5acc77458cea3589d502922, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194588364594323409, guid: 32748d64c5acc77458cea3589d502922, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194588364594323409, guid: 32748d64c5acc77458cea3589d502922, type: 3}
+      propertyPath: useUnscaledTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194588364594323409, guid: 32748d64c5acc77458cea3589d502922, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5309001754656298013, guid: 32748d64c5acc77458cea3589d502922, type: 3}
       propertyPath: m_Name
       value: HeatSrc1 (1)
@@ -2170,6 +2202,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 869188675711034794, guid: 32748d64c5acc77458cea3589d502922, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194588364594323409, guid: 32748d64c5acc77458cea3589d502922, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194588364594323409, guid: 32748d64c5acc77458cea3589d502922, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5309001754656298013, guid: 32748d64c5acc77458cea3589d502922, type: 3}

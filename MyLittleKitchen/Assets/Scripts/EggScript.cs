@@ -35,6 +35,8 @@ public class EggScript : MonoBehaviour
             {
                 Instantiate(rawEggPrefab, newPos, Quaternion.identity);
                 Destroy(transform.gameObject);
+                ItemHandler.isItem = false;
+                ItemHandler.changedState = true;
             }
         }
     }

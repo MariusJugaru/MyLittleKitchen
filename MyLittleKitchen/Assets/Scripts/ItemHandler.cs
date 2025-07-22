@@ -11,6 +11,11 @@ public class ItemHandler : MonoBehaviour
     public GameObject leftHand;
     public GameObject rightHand;
     public static bool isEquipment = false;
+    public static bool isItem = false;
+    public static bool changedState = false;
+
+    [Header("Hint")]
+    public GameObject useItem;
 
     private RaycastHit hit;
 
@@ -22,6 +27,13 @@ public class ItemHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (changedState)
+        {
+            changedState = false;
+            if (!isItem)
+                useItem.SetActive(false);
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             Transform item = rightHand.transform.childCount > 0 ? rightHand.transform.GetChild(0) : null;
@@ -80,13 +92,16 @@ public class ItemHandler : MonoBehaviour
             return;
         }
 
-        isEquipment = false;
+        
 
         // Raycast from player camera to mouse position
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore))
         {
+            isEquipment = false;
+            useItem.SetActive(false);
+            isItem = false;
             Vector3 hitpoint = hit.point;
             Transform placePos = item.transform.Find("PlacePos");
 
@@ -158,7 +173,10 @@ public class ItemHandler : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore) &&
             (hit.transform.CompareTag("Item") || hit.transform.CompareTag("Equipment")))
         {
-            if (hit.transform.CompareTag("Equipment")) isEquipment = true;
+            if (hit.transform.CompareTag("Equipment"))
+            isEquipment = true;
+            else isItem = true;
+            useItem.SetActive(true);
             
             Transform item = hit.transform;
 

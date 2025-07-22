@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class HeatScript : ButtonScript
@@ -20,11 +21,17 @@ public class HeatScript : ButtonScript
     [Header("Particles")]
     public ParticleSystem particles;
 
+    private void StopParticles()
+    {
+        particles.Stop();
+    }
+
     private new void Start()
     {
         base.Start();
 
-        particles.Stop();
+        particles.Play();
+        Invoke(nameof(StopParticles), 1f);
 
         // get the trigger collider for the heat source
         Collider[] colliders = GetComponents<Collider>();

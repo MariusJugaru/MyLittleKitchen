@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a61c1747d7d0ba4083cd968c0b5d492, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.678
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a61c1747d7d0ba4083cd968c0b5d492, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.1150001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a61c1747d7d0ba4083cd968c0b5d492, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.088
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a61c1747d7d0ba4083cd968c0b5d492, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a61c1747d7d0ba4083cd968c0b5d492, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1a61c1747d7d0ba4083cd968c0b5d492, type: 3}
       propertyPath: m_LocalRotation.y
@@ -81,6 +81,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a61c1747d7d0ba4083cd968c0b5d492, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1859677590081203654}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a61c1747d7d0ba4083cd968c0b5d492, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9163659475658222979}
   m_SourcePrefab: {fileID: 100100000, guid: 1a61c1747d7d0ba4083cd968c0b5d492, type: 3}
 --- !u!1 &4623809153555358857 stripped
 GameObject:
@@ -142,11 +145,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4623809153555358857}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 743415ddb5289ee46937c8571906e0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hoverCirclePrefab: {fileID: 8102316948000523553, guid: 6ce11c025bd38a84d8447941e42dddce, type: 3}
   size: 1
+  maxDistToItem: 3
+--- !u!114 &9163659475658222979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623809153555358857}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e87404bc56ef24181993914cdecd4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rawEggPrefab: {fileID: 255006921775374529, guid: e0e3498a3b216904baec289484f7428c, type: 3}
   maxDistToItem: 3
