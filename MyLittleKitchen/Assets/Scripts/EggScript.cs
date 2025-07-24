@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class EggScript : MonoBehaviour
 {
     public GameObject rawEggPrefab;
+    public GameObject eggShellPrefab;
 
     [Header("Camera")]
     private Camera cam;
@@ -34,9 +35,17 @@ public class EggScript : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Instantiate(rawEggPrefab, newPos, Quaternion.identity);
-                Destroy(transform.gameObject);
+
                 ItemHandler.isItem = false;
                 ItemHandler.changedState = true;
+
+                GameObject shell = Instantiate(eggShellPrefab, transform.position, transform.rotation);
+                shell.transform.SetParent(transform.parent);
+
+                ItemHandler.DisableAllChildColliders(shell);
+                ItemHandler.DisableAllChildRigidbody(shell);
+                
+                Destroy(transform.gameObject);
             }
         }
     }

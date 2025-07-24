@@ -8,6 +8,7 @@ TagManager:
   - Interactable
   - Food
   - Equipment
+  - Paw
   layers:
   - Default
   - TransparentFX
