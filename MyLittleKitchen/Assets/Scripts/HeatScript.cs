@@ -21,6 +21,8 @@ public class HeatScript : ButtonScript
     [Header("Particles")]
     public ParticleSystem particles;
 
+    public bool preHeat = false;
+
     private void StopParticles()
     {
         particles.Stop();
@@ -31,7 +33,7 @@ public class HeatScript : ButtonScript
         base.Start();
 
         particles.Play();
-        Invoke(nameof(StopParticles), 1f);
+        StopParticles();
 
         // get the trigger collider for the heat source
         Collider[] colliders = GetComponents<Collider>();
@@ -50,8 +52,9 @@ public class HeatScript : ButtonScript
     // Update is called once per frame
     void Update()
     {
-        if (OnKeyPressed(KeyCode.E, button))
+        if (OnKeyPressed(KeyCode.E, button) || preHeat)
         {
+            preHeat = false;
             if (!on)
             {
                 audioFlame.time = 0;

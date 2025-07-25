@@ -42,6 +42,8 @@ public class ServeFoodScript : ButtonScript
     private float maxScore = 0;
     private float currentScore = 0;
 
+    public string currentLevel = "MainGame";
+
     // Order text
     public GameObject orderText;
     private TextMeshProUGUI textUI;
@@ -62,6 +64,7 @@ public class ServeFoodScript : ButtonScript
 
     private new void Start()
     {
+
         base.Start();
 
         foreach (PlateRequirements req in allPlates)
@@ -122,12 +125,24 @@ public class ServeFoodScript : ButtonScript
             Cursor.visible = true;
             PauseMenu.GameIsPaused = true;
 
+            PlayerPrefs.SetInt(currentLevel, 0);
+            // Save in player pref the number of stars gained
             if (currentScore >= maxScore / 3)
+            {
                 star1.GetComponent<Image>().sprite = star;
+                PlayerPrefs.SetInt(currentLevel, 1);
+            }
             if (currentScore >= 2 * maxScore / 3)
+            {
                 star2.GetComponent<Image>().sprite = star;
+                PlayerPrefs.SetInt(currentLevel, 2);
+            }
             if (currentScore == maxScore)
+            {
                 star3.GetComponent<Image>().sprite = star;
+                PlayerPrefs.SetInt(currentLevel, 3);
+            }
+                
 
             scoreText.GetComponent<TextMeshProUGUI>().text = "SCORE\n" + currentScore;
         }
