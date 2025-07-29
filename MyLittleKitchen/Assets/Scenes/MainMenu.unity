@@ -606,7 +606,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\tIn this level you will learn how to cook fried eggs.\n\n\tThings you'll
     need:\n\n  \u2022 an egg\n  \u2022 a pan\n  \u2022 a spatula\n  \u2022 a bit
-    of oil\n  \u2022 a plate\n  \u2022 salt and pepper to preference \n\t\n "
+    of oil\n  \u2022 a plate\n  \u2022 salt and pepper to preference\n\n  Tip: Use
+    a bit of oil so the eggs don't stick to the pan. \n\t\n "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

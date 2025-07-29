@@ -5,7 +5,7 @@ public class ItemHandler : MonoBehaviour
 {
     [Header("Camera")]
     private Camera cam;
-    public float maxDistToItem = 3;
+    public float maxDistToItem = 2;
 
     [Header("Hands")]
     public GameObject leftHand;

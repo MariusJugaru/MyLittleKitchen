@@ -142,17 +142,19 @@ public class HeatScript : ButtonScript
         return true;
     }
 
-    void EnableAllChildrenScripts(GameObject parent)
+    void EnableAllChildrenScripts(GameObject parent, bool hasOil = false)
     {
         MonoBehaviour[] scripts = parent.GetComponentsInChildren<CookingScript>(true);
-        MonoBehaviour outline = parent.GetComponent<Outline>();
+        // MonoBehaviour outline = parent.GetComponent<Outline>();
 
-        foreach (MonoBehaviour script in scripts)
+        foreach (CookingScript script in scripts)
         {
-            if (script.gameObject != parent && script != outline)
-            {
-                script.enabled = true;
-            }
+            if (script.gameObject == parent) continue;
+
+            script.enabled = true;
+            if (hasOil)
+                script.hasOil = true;
+            
         }
     }
 
@@ -203,11 +205,13 @@ public class HeatScript : ButtonScript
             items = item.transform.Find("Items");
             Debug.Log("Trigger:" + item);
 
+            StoreItemsScript storeItemsScript = equipment.GetComponent<StoreItemsScript>();
+
             if (on)
             {
                 // if the equipment has items and the heating source is on enable their scripts
                 // the food has a cooking script
-                EnableAllChildrenScripts(items.gameObject);
+                EnableAllChildrenScripts(items.gameObject, storeItemsScript.hasOil);
                 EnableAllChildrenSounds(items.gameObject);
             }
         }
@@ -224,9 +228,14 @@ public class HeatScript : ButtonScript
             //         script.enabled = true;
             // }
 
-            MonoBehaviour cookingScript = item.transform.parent.GetComponent<CookingScript>();
+            CookingScript cookingScript = item.transform.parent.GetComponent<CookingScript>();
             if (cookingScript)
                 cookingScript.enabled = true;
+
+            Transform equipment = item.transform.parent.parent.parent;
+            if (equipment != null && equipment.CompareTag("Equipment") &&
+                equipment.GetComponent<StoreItemsScript>().hasOil)
+                cookingScript.hasOil = true;
 
             AudioSource audio = item.transform.parent.GetComponent<AudioSource>();
             if (audio)

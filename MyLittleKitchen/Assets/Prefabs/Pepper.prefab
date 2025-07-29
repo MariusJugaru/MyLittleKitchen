@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverCirclePrefab: {fileID: 8102316948000523553, guid: 6ce11c025bd38a84d8447941e42dddce, type: 3}
   size: 1
-  maxDistToItem: 3
+  maxDistToItem: 2
 --- !u!114 &5403770418633748482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: a1e832ee423256b449f75c9a18803444, type: 2}
   m_audioClip: {fileID: 8300000, guid: e4afa4b0822fe084db86b6b2fdbb00ec, type: 3}
   m_Resource: {fileID: 8300000, guid: e4afa4b0822fe084db86b6b2fdbb00ec, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

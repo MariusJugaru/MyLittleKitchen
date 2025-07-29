@@ -7,7 +7,7 @@ public class ButtonScript : MonoBehaviour
 
     [Header("Button")]
     public GameObject button;
-    public float maxDistToItem = 3f;
+    public float maxDistToItem = 2f;
 
     public void Start()
     {

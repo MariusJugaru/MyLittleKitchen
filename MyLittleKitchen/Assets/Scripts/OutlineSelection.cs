@@ -9,7 +9,7 @@ public class OutlineSelection : MonoBehaviour
     private Transform selection;
     private RaycastHit raycastHit;
 
-    public float maxDistToItem;
+    public float maxDistToItem = 2;
 
     void Update()
     {

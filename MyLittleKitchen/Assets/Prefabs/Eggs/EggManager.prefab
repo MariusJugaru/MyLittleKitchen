@@ -52,6 +52,9 @@ MonoBehaviour:
   burntPrefab: {fileID: 4179684270864903426, guid: 9e9b2a8e9bed29141b8708ed22319543, type: 3}
   state: 0
   foodType: 0
+  needsOil: 1
+  hasOil: 0
+  clickReq: 0
   timeModifier: 1
   time1: 10
   time2: 10

@@ -215,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverCirclePrefab: {fileID: 8102316948000523553, guid: 6ce11c025bd38a84d8447941e42dddce, type: 3}
   size: 8
-  maxDistToItem: 3
+  maxDistToItem: 2
 --- !u!1001 &1935465055845308286
 PrefabInstance:
   m_ObjectHideFlags: 0

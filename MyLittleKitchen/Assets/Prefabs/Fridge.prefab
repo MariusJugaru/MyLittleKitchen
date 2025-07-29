@@ -850,7 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 2388446963997188390}
-  maxDistToItem: 3
+  maxDistToItem: 2
   clockwise: 0
   audioSrc: {fileID: 1221587232680120290}
   openDoor: {fileID: 8300000, guid: c0480c4b4161ec1419639a3e535bcb23, type: 3}
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1256565685381842154}
-  maxDistToItem: 3
+  maxDistToItem: 2
   clockwise: 0
   audioSrc: {fileID: 8423137950512128522}
   openDoor: {fileID: 8300000, guid: c0480c4b4161ec1419639a3e535bcb23, type: 3}

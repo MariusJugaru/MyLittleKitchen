@@ -4,7 +4,7 @@ public class SpatulaScript : MonoBehaviour
 {
     [Header("Camera")]
     private Camera cam;
-    public float maxDistToItem = 3;
+    public float maxDistToItem = 2;
 
     private Transform itemHolder;
     private RaycastHit hit;
@@ -34,6 +34,20 @@ public class SpatulaScript : MonoBehaviour
                 if (!item.CompareTag("Food")) return;
                 if (item.parent != null && item.parent.CompareTag("Food"))
                     item = item.parent;
+
+                CookingScript cookingScript = item.GetComponent<CookingScript>();
+                if (cookingScript.needsOil && !cookingScript.hasOil && cookingScript.clickReq != 0)
+                {
+                    cookingScript.clickReq--;
+
+                    Transform equipment = item.parent.parent;
+                    if (!equipment || !equipment.CompareTag("Equipment")) return;
+
+                    AudioSource audioSrc = equipment.GetComponent<AudioSource>();
+                    if (audioSrc) audioSrc.Play();
+                    
+                    return;
+                }
 
                 PickItem(item);
             }

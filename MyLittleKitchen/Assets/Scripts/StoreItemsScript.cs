@@ -6,6 +6,11 @@ public class StoreItemsScript : MonoBehaviour
 
     public GameObject items;
 
+    [Header("Oil")]
+    public GameObject oil;
+    public bool hasOil = false;
+    public float maxOilHeight = 0.2f;
+
     private void OnTriggerEnter(Collider other)
     {
         if (items == null)

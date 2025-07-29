@@ -24,6 +24,11 @@ public class CookingScript : MonoBehaviour
 
     public FoodType foodType;
 
+    [Header("Oil stick")]
+    public bool needsOil = false;
+    public bool hasOil = false;
+    public int clickReq;
+
     [Header("Cook times")]
     public float timeModifier = 1;
 
@@ -42,6 +47,7 @@ public class CookingScript : MonoBehaviour
     void Start()
     {
         food = transform.GetChild(0).gameObject;
+        clickReq = Random.Range(1, 3);
     }
 
     void Update()
