@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -92,8 +93,6 @@ public class ItemHandler : MonoBehaviour
             return;
         }
 
-        
-
         // Raycast from player camera to mouse position
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
@@ -138,6 +137,7 @@ public class ItemHandler : MonoBehaviour
             if (body != null)
                 body.isKinematic = false;
             EnableAllChildColliders(item.gameObject);
+            EnableAllChildRigidbody(item.gameObject);
 
             Transform items = item.Find("Items");
 
@@ -171,14 +171,20 @@ public class ItemHandler : MonoBehaviour
 
 
         if (Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore) &&
-            (hit.transform.CompareTag("Item") || hit.transform.CompareTag("Equipment")))
+            (hit.transform.CompareTag("Item") || hit.transform.CompareTag("Equipment") || hit.transform.CompareTag("FoodItem")))
         {
             if (hit.transform.CompareTag("Equipment"))
             isEquipment = true;
             else isItem = true;
             useItem.SetActive(true);
-            
+
             Transform item = hit.transform;
+            if (item.CompareTag("FoodItem") && item.parent && item.parent.CompareTag("Food"))
+            {
+                item.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                item = item.parent;
+            }
+                
 
             BoxCollider box = item.GetComponent<BoxCollider>();
             Rigidbody body = item.GetComponent<Rigidbody>();
@@ -195,6 +201,7 @@ public class ItemHandler : MonoBehaviour
             item.localRotation = Quaternion.identity;
 
             DisableAllChildColliders(item.gameObject);
+            DisableAllChildRigidbody(item.gameObject);
             Transform items = item.Find("Items");
 
             if (items != null)
@@ -204,14 +211,29 @@ public class ItemHandler : MonoBehaviour
             }
 
             // activate item scripts
+            CookingScript cookingScript = item.GetComponent<CookingScript>();
             MonoBehaviour[] scripts = item.GetComponents<MonoBehaviour>();
             foreach (MonoBehaviour script in scripts)
-                script.enabled = true;
+            {
+                if (!cookingScript)
+                    script.enabled = true;
+                else if (script != cookingScript)
+                    script.enabled = true;
+                
+            }
+                
             PlacementHoverScript[] itemHover = item.GetComponentsInChildren<PlacementHoverScript>();
             foreach (PlacementHoverScript script in itemHover)
             {
                 if (script != GetComponent<PlacementHoverScript>())
                     script.enabled = true;
+            }
+
+            AudioSource[] audioSrcs = item.GetComponentsInChildren<AudioSource>();
+            foreach (AudioSource audiosrc in audioSrcs)
+            {
+                if (cookingScript)
+                    audiosrc.enabled = false;
             }
 
             Debug.Log(item);

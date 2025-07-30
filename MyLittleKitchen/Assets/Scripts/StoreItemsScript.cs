@@ -19,7 +19,7 @@ public class StoreItemsScript : MonoBehaviour
             return;
         }
 
-        if (!other.CompareTag("Item") && !other.CompareTag("Food")) return;
+        if (!other.CompareTag("Item") && !other.CompareTag("Food") && !other.CompareTag("FoodItem")) return;
 
         Transform item = other.transform;
         if (item.parent != null && item.parent.CompareTag("Food"))
@@ -34,7 +34,7 @@ public class StoreItemsScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Item") && !other.CompareTag("Food")) return;
+        if (!other.CompareTag("Item") && !other.CompareTag("Food") && !other.CompareTag("FoodItem")) return;
 
         Transform item = other.transform;
         if (item.parent != null && item.parent.CompareTag("Food"))

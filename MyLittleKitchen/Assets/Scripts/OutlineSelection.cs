@@ -24,7 +24,8 @@ public class OutlineSelection : MonoBehaviour
         {
             highlight = raycastHit.transform;
             if (((!ItemHandler.isEquipment &&
-                (highlight.CompareTag("Item") || highlight.CompareTag("Interactable") || highlight.CompareTag("Equipment"))) ||
+                (highlight.CompareTag("Item") || highlight.CompareTag("Interactable") || highlight.CompareTag("Equipment") || 
+                highlight.CompareTag("FoodItem"))) ||
                 (ItemHandler.isEquipment &&
                 highlight.CompareTag("Food")))
                 && highlight != selection)

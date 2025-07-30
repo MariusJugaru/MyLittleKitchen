@@ -20,6 +20,7 @@ public class CookingScript : MonoBehaviour
     public enum FoodType
     {
         FriedEgg,
+        Bacon
     };
 
     public FoodType foodType;

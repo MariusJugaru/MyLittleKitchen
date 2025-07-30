@@ -215,7 +215,7 @@ public class HeatScript : ButtonScript
                 EnableAllChildrenSounds(items.gameObject);
             }
         }
-        else if (item.CompareTag("Food") && on &&
+        else if ((item.CompareTag("Food") || item.CompareTag("FoodItem")) && on &&
             item.transform.parent != null && item.transform.parent.parent != null &&
             item.transform.parent.parent.name == "Items")
         {

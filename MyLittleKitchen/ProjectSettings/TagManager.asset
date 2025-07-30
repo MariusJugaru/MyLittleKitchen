@@ -9,6 +9,7 @@ TagManager:
   - Food
   - Equipment
   - Paw
+  - FoodItem
   layers:
   - Default
   - TransparentFX
