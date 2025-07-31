@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2258771655438541317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3739565521242580923}
+  m_Layer: 0
+  m_Name: PlacePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3739565521242580923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258771655438541317}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.009, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7631967755253132950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4946637180472135648
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,11 +59,12 @@ Transform:
   m_GameObject: {fileID: 4946637180472135648}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3654964, y: 1.0015242, z: 0.89591724}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4653448016605884419}
+  - {fileID: 3739565521242580923}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2789413685249196238
@@ -51,13 +83,13 @@ MonoBehaviour:
   slightlyBurntPrefab: {fileID: 8197418595142347151, guid: 040fc67bc7e49854592ff9338d012ae1, type: 3}
   burntPrefab: {fileID: 7539430367335753432, guid: 9ac9afa1c8ecee047b251ad21002b6e7, type: 3}
   state: 0
-  foodType: 0
+  foodType: 1
   needsOil: 0
   hasOil: 0
   clickReq: 0
   timeModifier: 1
-  time1: 10
-  time2: 10
+  time1: 25
+  time2: 15
   time3: 10
   maxHeat: 180
 --- !u!82 &8694182849903729952
