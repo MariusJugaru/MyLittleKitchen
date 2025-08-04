@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -7,6 +10,32 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+
+    private List<ServeFoodScript.PlateRequirements> allPlates;
+    private String currentLevel;
+
+    void Start()
+    {
+        GameObject servingStation = GameObject.Find("ServingStation");
+
+        if (servingStation)
+        {
+            ServeFoodScript serveFood = servingStation.GetComponent<ServeFoodScript>();
+
+            StartCoroutine(WaitForSet(serveFood));
+        }
+    }
+
+    IEnumerator WaitForSet(ServeFoodScript serveFood)
+    {
+        yield return new WaitUntil(() => serveFood.isSet);
+
+        allPlates = serveFood.allPlates;
+        currentLevel = serveFood.currentLevel;
+
+        Debug.Log(currentLevel);
+        Debug.Log(allPlates);
+    }
 
     void Update()
     {
@@ -44,8 +73,31 @@ public class PauseMenu : MonoBehaviour
     public void Restart()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(currentSceneName);
+
+        ItemHandler.isEquipment = false;
+        ItemHandler.isItem = false;
+
         Resume();
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainGame")
+        {
+            GameObject servingStation = GameObject.Find("ServingStation");
+
+            if (servingStation)
+            {
+                ServeFoodScript serveFood = servingStation.GetComponent<ServeFoodScript>();
+                serveFood.allPlates = allPlates;
+                serveFood.currentLevel = currentLevel;
+                serveFood.isSet = true;
+            }
+        }
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void LoadMenu()
@@ -64,11 +116,15 @@ public class PauseMenu : MonoBehaviour
 
     public void NextLevel()
     {
-        pauseMenuUI.SetActive(false);
-        GameIsPaused = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        Time.timeScale = 1f;
-        SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+        GameObject servingStation = GameObject.Find("ServingStation");
+
+        if (servingStation)
+        {
+            ServeFoodScript serveFood = servingStation.GetComponent<ServeFoodScript>();
+            allPlates = serveFood.nextLevel;
+            currentLevel = serveFood.nextLevelName;
+
+            Restart();
+        }
     }
 }

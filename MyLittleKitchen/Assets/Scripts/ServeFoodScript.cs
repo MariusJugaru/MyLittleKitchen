@@ -29,6 +29,7 @@ public class ServeFoodScript : ButtonScript
     // expectations for multiple plates
     [Header("Required Food")]
     public List<PlateRequirements> allPlates = new List<PlateRequirements>();
+    public bool isSet = false;
 
     [Header("Score screen")]
     public GameObject scoreUI;
@@ -43,6 +44,10 @@ public class ServeFoodScript : ButtonScript
     private float currentScore = 0;
 
     public string currentLevel = "MainGame";
+
+    [Header("Next Level")]
+    public List<PlateRequirements> nextLevel;
+    public string nextLevelName;
 
     // Order text
     public GameObject orderText;
