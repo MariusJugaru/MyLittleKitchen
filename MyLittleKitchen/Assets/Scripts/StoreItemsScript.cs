@@ -11,6 +11,11 @@ public class StoreItemsScript : MonoBehaviour
     public bool hasOil = false;
     public float maxOilHeight = 0.2f;
 
+    [Header("Water")]
+    public GameObject water;
+    public bool hasWater = false;
+    public float maxWaterOil = 0.2f;
+
     private void OnTriggerEnter(Collider other)
     {
         if (items == null)

@@ -47,7 +47,7 @@ public class OilBottleScript : MonoBehaviour
 
                 if (storeScript.maxOilHeight >= storeScript.oil.transform.localPosition.y)
                 {
-                    storeScript.oil.transform.position += new Vector3(0, 0.01f, 0);
+                    storeScript.oil.transform.localPosition += new Vector3(0, 0.01f, 0);
                     Debug.Log(storeScript.oil.transform.localPosition.y);
                 }
                     
