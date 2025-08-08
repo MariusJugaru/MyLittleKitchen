@@ -179,7 +179,7 @@ public class ItemHandler : MonoBehaviour
             useItem.SetActive(true);
 
             Transform item = hit.transform;
-            if (item.CompareTag("FoodItem") && item.parent && item.parent.CompareTag("Food"))
+            if (item.CompareTag("FoodItem"))
             {
                 item.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                 item = item.parent;
@@ -229,10 +229,17 @@ public class ItemHandler : MonoBehaviour
                     script.enabled = true;
             }
 
+            EggCrackScript[] eggCrackScripts = item.GetComponentsInChildren<EggCrackScript>();
+            foreach (EggCrackScript script in eggCrackScripts)
+            {
+                if (script != GetComponent<EggCrackScript>())
+                    script.enabled = true;
+            }
+
             AudioSource[] audioSrcs = item.GetComponentsInChildren<AudioSource>();
             foreach (AudioSource audiosrc in audioSrcs)
             {
-                if (cookingScript)
+                if (cookingScript && cookingScript.audioDisable)
                     audiosrc.enabled = false;
             }
 

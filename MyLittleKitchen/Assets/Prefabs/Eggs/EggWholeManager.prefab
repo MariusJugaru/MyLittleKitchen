@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1529155382360495658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7880155794496249571}
+  m_Layer: 0
+  m_Name: PlacePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7880155794496249571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529155382360495658}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7012937034659938535}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7230652685023207805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7012937034659938535}
+  - component: {fileID: 1623520373835792705}
+  m_Layer: 0
+  m_Name: EggWholeManager
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7012937034659938535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7230652685023207805}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1541589361401034826}
+  - {fileID: 7880155794496249571}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1623520373835792705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7230652685023207805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461cf32ad0b909c48aaa1253da620108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookedPrefab: {fileID: 4623809153555358857, guid: 18c8c94320175144186601a489d8cbbf, type: 3}
+  slightlyBurntPrefab: {fileID: 2883568414347220228, guid: 45993d81c71b82f4985b8b6bf33dfe7a, type: 3}
+  burntPrefab: {fileID: 3455684088804266601, guid: aae7af9cadc43b647ae65e9a4d4cc70a, type: 3}
+  state: 0
+  foodType: 0
+  needsOil: 0
+  hasOil: 0
+  clickReq: 0
+  timeModifier: 1
+  time1: 5
+  time2: 5
+  time3: 5
+  maxHeat: 0
+  food: {fileID: 0}
+  audioDisable: 0
+--- !u!1001 &6774559644560508537
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7012937034659938535}
+    m_Modifications:
+    - target: {fileID: 4623809153555358857, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_Name
+      value: Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623809153555358857, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_TagString
+      value: FoodItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431553638754270771, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431553638754270771, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431553638754270771, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431553638754270771, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431553638754270771, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431553638754270771, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431553638754270771, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431553638754270771, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431553638754270771, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431553638754270771, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+--- !u!4 &1541589361401034826 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5431553638754270771, guid: 8983cbd2b8f17ff4aad5f204cef673a2, type: 3}
+  m_PrefabInstance: {fileID: 6774559644560508537}
+  m_PrefabAsset: {fileID: 0}

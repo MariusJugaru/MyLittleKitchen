@@ -15,9 +15,8 @@ public class TrashcanScript : MonoBehaviour
     {
         Transform obj = other.transform;
 
-        if (obj.CompareTag("Untagged") && obj.parent)
+        while ((obj.CompareTag("Untagged") || obj.CompareTag("FoodItem")) && obj.parent)
             obj = obj.parent;
-
         if (obj.CompareTag("Food") || obj.CompareTag("Item"))
         {
             // Debug.Log(other.transform);
@@ -26,6 +25,7 @@ public class TrashcanScript : MonoBehaviour
             audioSrc.Play();
             Destroy(obj.gameObject);
         }
+        
             
     }
 }

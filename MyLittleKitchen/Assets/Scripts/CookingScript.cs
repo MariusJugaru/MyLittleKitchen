@@ -42,12 +42,16 @@ public class CookingScript : MonoBehaviour
 
     private float currentTime = 0;
 
-    private GameObject food;
+    public GameObject food;
     private GameObject aux;
+
+    [Header("Disable audio on pickup")]
+    public bool audioDisable = true;
 
     void Start()
     {
-        food = transform.GetChild(0).gameObject;
+        if (!food)
+            food = transform.GetChild(0).gameObject;
         clickReq = Random.Range(1, 3);
     }
 

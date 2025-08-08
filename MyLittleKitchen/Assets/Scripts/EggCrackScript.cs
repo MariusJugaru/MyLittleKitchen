@@ -15,6 +15,7 @@ public class EggCrackScript : MonoBehaviour
 
     private bool isCracked = false;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,18 +38,27 @@ public class EggCrackScript : MonoBehaviour
         {
             isCracked = true;
             
-            paw = transform.parent.parent;
+            paw = transform.parent.parent.parent;
             if (!paw.CompareTag("Paw"))
             {
-                Debug.Log("Hand does not have the paw tag or something went wrong");
-                return;
+                paw = transform.parent.parent;
+                if (!paw.CompareTag("Paw"))
+                {
+                    Debug.Log("Hand does not have the paw tag or something went wrong");
+                    return;
+                }
             }
 
             // paw rotates dow and up
-            pawAnimator = transform.parent.parent.GetComponent<Animator>();
+            pawAnimator = paw.GetComponent<Animator>();
             pawAnimator.SetBool("isCracking", true);
 
             transform.GetComponent<AudioSource>().Play();
+
+            // destroy parent cooking script
+            CookingScript parentCookingScript = transform.parent.GetComponent<CookingScript>();
+            if (parentCookingScript)
+                Destroy(parentCookingScript);
 
             Invoke(nameof(ChangeEggPrefab), 0.2f);
         }
