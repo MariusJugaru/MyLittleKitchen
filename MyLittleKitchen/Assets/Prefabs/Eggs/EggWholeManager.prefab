@@ -78,13 +78,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookedPrefab: {fileID: 4623809153555358857, guid: 18c8c94320175144186601a489d8cbbf, type: 3}
-  slightlyBurntPrefab: {fileID: 2883568414347220228, guid: 45993d81c71b82f4985b8b6bf33dfe7a, type: 3}
-  burntPrefab: {fileID: 3455684088804266601, guid: aae7af9cadc43b647ae65e9a4d4cc70a, type: 3}
+  slightlyBurntPrefab: {fileID: 4623809153555358857, guid: 600fcdda9ab492a48bd53b89388df1e5, type: 3}
+  burntPrefab: {fileID: 4623809153555358857, guid: a87ff83d5bb82214481fcf3f01db5f5f, type: 3}
   state: 0
-  foodType: 0
+  foodType: 2
   needsOil: 0
   hasOil: 0
   clickReq: 0
+  needsWater: 1
+  hasWater: 0
   timeModifier: 1
   time1: 5
   time2: 5

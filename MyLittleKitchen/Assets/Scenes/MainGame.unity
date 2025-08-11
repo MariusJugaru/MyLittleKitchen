@@ -11304,7 +11304,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1623520373835792705, guid: 40de9a1aeccc48745ae075e2f4e2d956, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7012937034659938535, guid: 40de9a1aeccc48745ae075e2f4e2d956, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11349,6 +11349,10 @@ PrefabInstance:
     - target: {fileID: 7230652685023207805, guid: 40de9a1aeccc48745ae075e2f4e2d956, type: 3}
       propertyPath: m_Name
       value: EggWholeManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230652685023207805, guid: 40de9a1aeccc48745ae075e2f4e2d956, type: 3}
+      propertyPath: m_TagString
+      value: Food
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14557,7 +14561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6864058346597983293, guid: b6f4c28343b29cb48ad81012684333a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 6864058346597983293, guid: b6f4c28343b29cb48ad81012684333a0, type: 3}
       propertyPath: m_LocalRotation.w

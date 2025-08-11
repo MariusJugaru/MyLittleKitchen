@@ -35,6 +35,12 @@ public class StoreItemsScript : MonoBehaviour
         item.SetParent(items.transform, worldPositionStays: true);
 
         Debug.Log("Item stored " + gameObject);
+
+        // Modify extra modifiers for the cooking script
+        CookingScript cookingScript = item.GetComponent<CookingScript>();
+        if (!cookingScript) return;
+
+        if (hasWater) cookingScript.hasWater = true;
     }
 
     void OnTriggerExit(Collider other)
@@ -48,5 +54,10 @@ public class StoreItemsScript : MonoBehaviour
         }
 
         item.SetParent(null, worldPositionStays: true);
+
+        CookingScript cookingScript = item.GetComponent<CookingScript>();
+        if (!cookingScript) return;
+
+        if (hasWater) cookingScript.hasWater = false;
     }
 }

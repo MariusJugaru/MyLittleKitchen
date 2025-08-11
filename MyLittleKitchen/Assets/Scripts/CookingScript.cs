@@ -20,7 +20,8 @@ public class CookingScript : MonoBehaviour
     public enum FoodType
     {
         FriedEgg,
-        Bacon
+        Bacon,
+        BoiledEgg
     };
 
     public FoodType foodType;
@@ -29,6 +30,10 @@ public class CookingScript : MonoBehaviour
     public bool needsOil = false;
     public bool hasOil = false;
     public int clickReq;
+
+    [Header("Cooked in water")]
+    public bool needsWater = false;
+    public bool hasWater = false;
 
     [Header("Cook times")]
     public float timeModifier = 1;
@@ -57,6 +62,8 @@ public class CookingScript : MonoBehaviour
 
     void Update()
     {
+        if (needsWater && !hasWater) return;
+
         currentTime += Time.deltaTime * timeModifier;
 
         // check if the food goes to next cook state

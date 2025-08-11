@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SpatulaScript : MonoBehaviour
@@ -27,6 +28,7 @@ public class SpatulaScript : MonoBehaviour
             if (!Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore)) return;
 
             Transform item;
+            // pick item with spatula
             if (itemHolder.childCount == 0)
             {
                 item = hit.transform;
@@ -36,6 +38,7 @@ public class SpatulaScript : MonoBehaviour
                     item = item.parent;
 
                 CookingScript cookingScript = item.GetComponent<CookingScript>();
+                // check if the food needs oil to be picked up
                 if (cookingScript.needsOil && !cookingScript.hasOil && cookingScript.clickReq != 0)
                 {
                     cookingScript.clickReq--;
@@ -45,7 +48,7 @@ public class SpatulaScript : MonoBehaviour
 
                     AudioSource audioSrc = equipment.GetComponent<AudioSource>();
                     if (audioSrc) audioSrc.Play();
-                    
+
                     return;
                 }
 
@@ -60,6 +63,18 @@ public class SpatulaScript : MonoBehaviour
             }
                 
         }
+    }
+
+    // returns the first child with a tag, else returns null
+    Transform GetChildWithTag(Transform parent, String tag)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.CompareTag(tag))
+                return child;
+        }
+
+        return null;
     }
 
     void PickItem(Transform item)
@@ -77,10 +92,13 @@ public class SpatulaScript : MonoBehaviour
 
         // move item to item holder
         item.SetParent(itemHolder.transform, worldPositionStays: false);
-        item.GetChild(0).localPosition = Vector3.zero;
-        item.GetChild(0).localRotation = Quaternion.identity;
+        
         item.localPosition = Vector3.zero;
         item.localRotation = Quaternion.identity;
+        Transform child = GetChildWithTag(item, "Food");
+
+        child.localPosition = Vector3.zero;
+        child.localRotation = Quaternion.identity;
 
         MonoBehaviour cookingScript = item.GetComponent<CookingScript>();
         if (cookingScript)

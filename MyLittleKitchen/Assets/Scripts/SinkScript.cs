@@ -9,6 +9,7 @@ public class SinkScript : ButtonScript
     private bool sinkOn = false;
     private Transform item;
     private StoreItemsScript storeItemsScript;
+    public GameObject water;
 
 
     // Update is called once per frame
@@ -19,17 +20,22 @@ public class SinkScript : ButtonScript
             if (sinkOn)
             {
                 sinkOn = false;
+                water.SetActive(false);
                 audioSrc.Stop();
             }
             else
             {
                 sinkOn = true;
+                water.SetActive(true);
                 audioSrc.Play();
             }
         }
 
         if (sinkOn && storeItemsScript && storeItemsScript.water)
         {
+            storeItemsScript.hasWater = true;
+            SetWaterForItems(item.Find("Items"));
+
             storeItemsScript.water.SetActive(true);
             if (storeItemsScript.maxOilHeight >= storeItemsScript.water.transform.localPosition.y)
             {
@@ -49,5 +55,14 @@ public class SinkScript : ButtonScript
 
         item = other.transform;
         storeItemsScript = item.GetComponent<StoreItemsScript>();
+    }
+
+    void SetWaterForItems(Transform items)
+    {
+        foreach (Transform child in items)
+        {
+            CookingScript cookingScript = child.GetComponent<CookingScript>();
+            if (cookingScript) cookingScript.hasWater = true;
+        }
     }
 }
