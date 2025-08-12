@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1623520373835792705}
   m_Layer: 0
   m_Name: EggWholeManager
-  m_TagString: Item
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +88,7 @@ MonoBehaviour:
   needsWater: 1
   hasWater: 0
   timeModifier: 1
-  time1: 5
+  time1: 10
   time2: 5
   time3: 5
   maxHeat: 0

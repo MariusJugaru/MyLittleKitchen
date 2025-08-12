@@ -53,6 +53,7 @@ public class EggCrackScript : MonoBehaviour
             pawAnimator = paw.GetComponent<Animator>();
             pawAnimator.SetBool("isCracking", true);
 
+            transform.GetComponent<AudioSource>().enabled = true;
             transform.GetComponent<AudioSource>().Play();
 
             // destroy parent cooking script

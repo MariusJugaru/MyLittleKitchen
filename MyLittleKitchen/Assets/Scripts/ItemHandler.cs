@@ -147,10 +147,18 @@ public class ItemHandler : MonoBehaviour
                 EnableAllChildRigidbody(items.gameObject);
             }
 
+            // don't disable the egg timer script
+            EggTimerScript eggTimerScript = item.GetComponentInChildren<EggTimerScript>();
+            if (eggTimerScript) eggTimerScript.isHoldingEgg = false;
+
             // deactivate item scripts
             MonoBehaviour[] scripts = item.GetComponentsInChildren<MonoBehaviour>();
             foreach (MonoBehaviour script in scripts)
-                script.enabled = false;
+            {
+                if (script != eggTimerScript)
+                    script.enabled = false;
+            }
+                
             
 
             Debug.Log(hitpoint);
@@ -221,6 +229,9 @@ public class ItemHandler : MonoBehaviour
                     script.enabled = true;
                 
             }
+
+            EggTimerScript eggTimerScript = item.GetComponentInChildren<EggTimerScript>();
+            if (eggTimerScript) eggTimerScript.isHoldingEgg = true;
                 
             PlacementHoverScript[] itemHover = item.GetComponentsInChildren<PlacementHoverScript>();
             foreach (PlacementHoverScript script in itemHover)
