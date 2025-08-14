@@ -27,7 +27,7 @@ public class StoreItemsScript : MonoBehaviour
         if (!other.CompareTag("Item") && !other.CompareTag("Food") && !other.CompareTag("FoodItem")) return;
 
         Transform item = other.transform;
-        if (item.parent != null && item.parent.CompareTag("Food"))
+        if (item.parent != null && (item.parent.CompareTag("Food") || item.parent.CompareTag("Item")))
         {
             item = item.parent;
         }

@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6864058346597983293}
   - component: {fileID: 8509283697110131911}
+  - component: {fileID: -4681303922431429638}
   m_Layer: 0
   m_Name: EggBoiled
   m_TagString: Item
@@ -92,6 +93,35 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4681303922431429638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393737218911151272}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461cf32ad0b909c48aaa1253da620108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookedPrefab: {fileID: 0}
+  slightlyBurntPrefab: {fileID: 0}
+  burntPrefab: {fileID: 0}
+  state: 1
+  foodType: 2
+  needsOil: 0
+  hasOil: 0
+  clickReq: 0
+  needsWater: 0
+  hasWater: 0
+  timeModifier: 0
+  time1: 100000000
+  time2: 1e+10
+  time3: 1e+9
+  maxHeat: 0
+  food: {fileID: 0}
+  audioDisable: 1
 --- !u!1001 &155131995380107954
 PrefabInstance:
   m_ObjectHideFlags: 0
