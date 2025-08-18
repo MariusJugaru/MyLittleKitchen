@@ -125,6 +125,8 @@ public class ItemHandler : MonoBehaviour
             Vector3 currentRotItem = item.rotation.eulerAngles;
             Vector3 currentRotCam = cam.transform.rotation.eulerAngles;
             Vector3 newRotation = new Vector3(currentRotItem.x, currentRotCam.y, currentRotItem.z);
+            if (placePos)
+                newRotation += placePos.rotation.eulerAngles;
 
             item.rotation = Quaternion.Euler(newRotation);
 
