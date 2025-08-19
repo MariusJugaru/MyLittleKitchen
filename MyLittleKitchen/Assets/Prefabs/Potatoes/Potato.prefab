@@ -82,6 +82,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1807c6c86f2257c46b209475393f57c5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2866804125400940757}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1807c6c86f2257c46b209475393f57c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5562175855803894434}
   m_SourcePrefab: {fileID: 100100000, guid: 1807c6c86f2257c46b209475393f57c5, type: 3}
 --- !u!1 &5773270168050477959 stripped
 GameObject:
@@ -136,3 +139,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5562175855803894434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5773270168050477959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06a37f4590a69f45a0285e4d2e2d142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPeel: 1
+  peeledPrefab: {fileID: 4138417298630656782, guid: bd39649a7011563408a332083f9429b1, type: 3}
+  canCut: 0
+  multipleCutPrefabs: 0
+  cutPrefab: []
