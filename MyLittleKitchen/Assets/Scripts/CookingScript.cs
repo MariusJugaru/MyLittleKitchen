@@ -21,7 +21,8 @@ public class CookingScript : MonoBehaviour
     {
         FriedEgg,
         Bacon,
-        BoiledEgg
+        BoiledEgg,
+        Fries
     };
 
     public FoodType foodType;

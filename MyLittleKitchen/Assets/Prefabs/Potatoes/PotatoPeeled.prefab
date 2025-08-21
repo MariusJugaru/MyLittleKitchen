@@ -156,4 +156,4 @@ MonoBehaviour:
   canCut: 1
   multipleCutPrefabs: 0
   cutPrefab:
-  - {fileID: 770116803882342361, guid: 1418cdb3714ad7744b80079ba70b604b, type: 3}
+  - {fileID: 255006921775374529, guid: e9a94da87eb4d774a8aa40f678f11afd, type: 3}

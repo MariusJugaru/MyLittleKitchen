@@ -6,11 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelSelector : MonoBehaviour
 {
     [Header("Level config")]
-    public List<ServeFoodScript.PlateRequirements> allPlates;
-    public String currentLevel;
-
-    public List<ServeFoodScript.PlateRequirements> nextLevel;
-    public String nextLevelName;
+    public int levelIdx = 0;
 
     public void PlayLevel1()
     {
@@ -27,10 +23,7 @@ public class LevelSelector : MonoBehaviour
             if (servingStation)
             {
                 ServeFoodScript serveFood = servingStation.GetComponent<ServeFoodScript>();
-                serveFood.allPlates = allPlates;
-                serveFood.currentLevel = currentLevel;
-                serveFood.nextLevel = nextLevel;
-                serveFood.nextLevelName = nextLevelName;
+                serveFood.currentLevelIdx = levelIdx;
                 serveFood.isSet = true;
             }
         }

@@ -29,7 +29,6 @@ public class ServeFoodScript : ButtonScript
     // expectations for multiple plates
     [Header("Required Food")]
     public List<PlateRequirements> allPlates = new List<PlateRequirements>();
-    public bool isSet = false;
 
     [Header("Score screen")]
     public GameObject scoreUI;
@@ -40,14 +39,17 @@ public class ServeFoodScript : ButtonScript
 
     public Sprite star;
 
+    [Header("Next Level Button")]
+    public GameObject nextLevelButton;
+
     private float maxScore = 0;
     private float currentScore = 0;
 
     public string currentLevel = "MainGame";
+    public int currentLevelIdx = 0;
 
-    [Header("Next Level")]
-    public List<PlateRequirements> nextLevel;
-    public string nextLevelName;
+    public bool isSet = false;
+
 
     // Order text
     public GameObject orderText;
@@ -69,6 +71,21 @@ public class ServeFoodScript : ButtonScript
 
     private new void Start()
     {
+
+        GameObject levelManager = GameObject.Find("LevelManager");
+        LevelManager levelManagerScript;
+        if (levelManager)
+        {
+            levelManagerScript = levelManager.GetComponent<LevelManager>();
+            if (levelManagerScript.levels.Count - 1 == currentLevelIdx) nextLevelButton.SetActive(false);
+            if (levelManagerScript.levels.Count <= currentLevelIdx)
+            {
+                Debug.Log("Level doesn't exist");
+                return;
+            }
+            allPlates = levelManagerScript.levels[currentLevelIdx].plates;
+            currentLevel = "Level" + currentLevelIdx;
+        }
 
         base.Start();
 

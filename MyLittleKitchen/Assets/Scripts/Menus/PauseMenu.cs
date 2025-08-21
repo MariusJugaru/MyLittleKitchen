@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
 
     private List<ServeFoodScript.PlateRequirements> allPlates;
-    private String currentLevel;
+    private int currentLevelIdx;
 
     void Start()
     {
@@ -24,17 +24,14 @@ public class PauseMenu : MonoBehaviour
 
             StartCoroutine(WaitForSet(serveFood));
         }
+
     }
 
     IEnumerator WaitForSet(ServeFoodScript serveFood)
     {
         yield return new WaitUntil(() => serveFood.isSet);
 
-        allPlates = serveFood.allPlates;
-        currentLevel = serveFood.currentLevel;
-
-        Debug.Log(currentLevel);
-        Debug.Log(allPlates);
+        currentLevelIdx = serveFood.currentLevelIdx;
     }
 
     void Update()
@@ -91,8 +88,7 @@ public class PauseMenu : MonoBehaviour
             if (servingStation)
             {
                 ServeFoodScript serveFood = servingStation.GetComponent<ServeFoodScript>();
-                serveFood.allPlates = allPlates;
-                serveFood.currentLevel = currentLevel;
+                serveFood.currentLevelIdx = currentLevelIdx;
                 serveFood.isSet = true;
             }
         }
@@ -120,9 +116,7 @@ public class PauseMenu : MonoBehaviour
 
         if (servingStation)
         {
-            ServeFoodScript serveFood = servingStation.GetComponent<ServeFoodScript>();
-            allPlates = serveFood.nextLevel;
-            currentLevel = serveFood.nextLevelName;
+            currentLevelIdx++;
 
             Restart();
         }
