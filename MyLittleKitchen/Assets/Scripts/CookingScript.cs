@@ -22,7 +22,8 @@ public class CookingScript : MonoBehaviour
         FriedEgg,
         Bacon,
         BoiledEgg,
-        Fries
+        Fries,
+        Omelette
     };
 
     public FoodType foodType;
@@ -78,10 +79,16 @@ public class CookingScript : MonoBehaviour
             aux.transform.SetParent(transform, worldPositionStays: true);
 
             // set the same collider and rigidbody state
-            Collider collider = aux.GetComponent<Collider>();
-            Rigidbody rb = aux.GetComponent<Rigidbody>();
-            collider.enabled = food.GetComponent<Collider>().enabled;
-            rb.isKinematic = food.GetComponent<Rigidbody>().isKinematic;
+            Collider[] colliders = aux.GetComponentsInChildren<Collider>();
+            Rigidbody rb = aux.GetComponentInChildren<Rigidbody>();
+            bool oldCollState = food.GetComponentInChildren<Collider>().enabled;
+            bool oldRbState = food.GetComponentInChildren<Rigidbody>().isKinematic;
+
+            foreach (Collider coll in colliders)
+            {
+                coll.enabled = oldCollState;
+            }
+            rb.isKinematic = oldRbState;
 
             Destroy(food);
 
@@ -98,10 +105,16 @@ public class CookingScript : MonoBehaviour
             aux.transform.SetParent(transform, worldPositionStays: true);
 
             // set the same collider and rigidbody state
-            Collider collider = aux.GetComponent<Collider>();
-            Rigidbody rb = aux.GetComponent<Rigidbody>();
-            collider.enabled = food.GetComponent<Collider>().enabled;
-            rb.isKinematic = food.GetComponent<Rigidbody>().isKinematic;
+            Collider[] colliders = aux.GetComponentsInChildren<Collider>();
+            Rigidbody rb = aux.GetComponentInChildren<Rigidbody>();
+            bool oldCollState = food.GetComponentInChildren<Collider>().enabled;
+            bool oldRbState = food.GetComponentInChildren<Rigidbody>().isKinematic;
+
+            foreach (Collider coll in colliders)
+            {
+                coll.enabled = oldCollState;
+            }
+            rb.isKinematic = oldRbState;
 
             Destroy(food);
 
@@ -118,10 +131,16 @@ public class CookingScript : MonoBehaviour
             aux.transform.SetParent(transform, worldPositionStays: true);
 
             // set the same collider and rigidbody state
-            Collider collider = aux.GetComponent<Collider>();
-            Rigidbody rb = aux.GetComponent<Rigidbody>();
-            collider.enabled = food.GetComponent<Collider>().enabled;
-            rb.isKinematic = food.GetComponent<Rigidbody>().isKinematic;
+            Collider[] colliders = aux.GetComponentsInChildren<Collider>();
+            Rigidbody rb = aux.GetComponentInChildren<Rigidbody>();
+            bool oldCollState = food.GetComponentInChildren<Collider>().enabled;
+            bool oldRbState = food.GetComponentInChildren<Rigidbody>().isKinematic;
+
+            foreach (Collider coll in colliders)
+            {
+                coll.enabled = oldCollState;
+            }
+            rb.isKinematic = oldRbState;
 
             Destroy(food);
 
