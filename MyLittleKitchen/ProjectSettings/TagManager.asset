@@ -11,6 +11,7 @@ TagManager:
   - Paw
   - FoodItem
   - FixedPlacePos
+  - Collider
   layers:
   - Default
   - TransparentFX

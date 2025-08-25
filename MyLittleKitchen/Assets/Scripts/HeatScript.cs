@@ -68,7 +68,7 @@ public class HeatScript : ButtonScript
                 audioFlame.Stop();
                 particles.Stop();
             }
-                
+
             on = !on;
             button.transform.rotation *= Quaternion.Euler(90, 0, 0);
             Debug.Log("Pressed");
@@ -94,15 +94,21 @@ public class HeatScript : ButtonScript
 
             if (on)
             {
+                StoreItemsScript storeItemsScript = equipment.GetComponent<StoreItemsScript>();
+                if (storeItemsScript)
+                    storeItemsScript.isHeating = true;
                 EnableAllChildrenScripts(items.gameObject);
                 EnableAllChildrenSounds(items.gameObject);
             }
             else
             {
+                StoreItemsScript storeItemsScript = equipment.GetComponent<StoreItemsScript>();
+                if (storeItemsScript)
+                    storeItemsScript.isHeating = false;
                 DisableAllChildrenScripts(items.gameObject);
                 DisableAllChildrenSounds(items.gameObject);
             }
-                
+
         }
     }
 
@@ -133,6 +139,10 @@ public class HeatScript : ButtonScript
                 }
                 Debug.Log("Exit:" + equipment);
 
+                StoreItemsScript storeItemsScript = equipment.GetComponent<StoreItemsScript>();
+                if (storeItemsScript)
+                    storeItemsScript.isHeating = false;
+
                 equipment = null;
                 equipmentCollider = null;
             }
@@ -154,7 +164,7 @@ public class HeatScript : ButtonScript
             script.enabled = true;
             if (hasOil)
                 script.hasOil = true;
-            
+
         }
     }
 
@@ -200,6 +210,8 @@ public class HeatScript : ButtonScript
 
         if (item.CompareTag("Equipment"))
         {
+            if (item.name != "PanGood") return;
+
             equipment = item;
             equipmentCollider = equipment.GetComponent<Collider>();
             items = item.transform.Find("Items");
@@ -209,6 +221,7 @@ public class HeatScript : ButtonScript
 
             if (on)
             {
+                storeItemsScript.isHeating = true;
                 // if the equipment has items and the heating source is on enable their scripts
                 // the food has a cooking script
                 EnableAllChildrenScripts(items.gameObject, storeItemsScript.hasOil);
@@ -242,6 +255,20 @@ public class HeatScript : ButtonScript
                 audio.enabled = true;
         }
 
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        GameObject item;
+        item = other.transform.gameObject;
+
+        if (item.CompareTag("Equipment"))
+        {
+            if (item.name != "PanGood") return;
+
+            StoreItemsScript storeItemsScript = equipment.GetComponent<StoreItemsScript>();
+            storeItemsScript.isHeating = false;
+        }
     }
 
 }
