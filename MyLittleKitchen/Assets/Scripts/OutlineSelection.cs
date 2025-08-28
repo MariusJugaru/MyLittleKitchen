@@ -27,7 +27,7 @@ public class OutlineSelection : MonoBehaviour
                 (highlight.CompareTag("Item") || highlight.CompareTag("Interactable") || highlight.CompareTag("Equipment") || 
                 highlight.CompareTag("FoodItem"))) ||
                 (ItemHandler.isEquipment &&
-                highlight.CompareTag("Food")))
+                (highlight.CompareTag("Food") || (ItemHandler.isBowl && highlight.CompareTag("Equipment")))))
                 && highlight != selection)
             {
                 if (highlight.gameObject.GetComponent<Outline>() != null)

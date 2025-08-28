@@ -12,6 +12,7 @@ public class ItemHandler : MonoBehaviour
     public GameObject leftHand;
     public GameObject rightHand;
     public static bool isEquipment = false;
+    public static bool isBowl = false;
     public static bool isItem = false;
     public static bool changedState = false;
 
@@ -99,6 +100,7 @@ public class ItemHandler : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxDistToItem, ~0, QueryTriggerInteraction.Ignore))
         {
             isEquipment = false;
+            isBowl = false;
             useItem.SetActive(false);
             isItem = false;
             Vector3 hitpoint = hit.point;
@@ -184,9 +186,15 @@ public class ItemHandler : MonoBehaviour
             (hit.transform.CompareTag("Item") || hit.transform.CompareTag("Equipment") || hit.transform.CompareTag("FoodItem")))
         {
             if (hit.transform.CompareTag("Equipment"))
-            isEquipment = true;
+            {
+                isEquipment = true;
+
+                if (hit.transform.GetComponent<BowlWhiskingScript>())
+                    isBowl = true;
+            }
+
             else isItem = true;
-            useItem.SetActive(true);
+                useItem.SetActive(true);
 
             Transform item = hit.transform;
             if (item.CompareTag("FoodItem"))
